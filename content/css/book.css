@@ -1,0 +1,16 @@
+.book_cover
+{
+    float: left;
+    width: 200px;
+    height: 300px;
+    overflow: hidden;
+    background-color: #b5c5c3;
+    
+}
+
+div.book_cover img
+{
+    max-height: 100%;
+    max-width: 100%;
+}
+

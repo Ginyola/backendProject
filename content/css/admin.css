@@ -1,0 +1,9 @@
+.profile_data
+{
+    display: none;
+}
+
+#profileDataButton
+{
+    cursor: pointer;    
+}

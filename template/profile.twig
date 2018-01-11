@@ -1,0 +1,51 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+    <div>
+      <div class="avatar">
+        <img src="http://localhost/{{user.avatar}}" alt="Ошибка загрузки аватара">
+      </div>  
+
+      <div class="user_info">
+        <h1>Имя пользователя: 
+          {% if user.name is empty %}
+              {{user.login}}
+          {% else %}
+              {{user.name}}
+          {% endif %}</h1>
+        <ol>
+          <li><span>Email:</span> {{user.login}}</li>
+          <li><span>Адрес:</span> {{user.address}}</li>
+          <li><span>Номер телефона:</span> {{user.phone_number}}</li>
+          <li><span>День рождения:</span> {{user.birthday}}</li>
+          <li><span>Дата регистрации:</span> {{user.registration_time}}</li>
+        </ol>
+      </div>
+      <div>
+        <h2>Свои книги</h2>
+        {% if user_books is empty %}
+            <p>Нет книг</p>
+        {% else %}
+            <table class="user_books_table" cellpadding="5">
+              <tr class="user_books_table_row">
+                <th class="user_books_table_number"> № </th>
+                <th class="user_books_table_cell"> Название книги </th>
+                <th class="user_books_table_cell"> Дата добавления </th>
+              </tr>
+              {% for i in user_books %}
+                  <tr class="user_books_table_row">
+                    <td>{{ loop.index }}</td><td><a href="http://localhost/php/book.php?id={{i.book_id}}">{{i.title}}</td><td>{{i.add_date}}</td>
+                  </tr>
+              {% endfor %}
+            </table>
+        {% endif %}
+      </div>  
+      <form action="http://localhost/php/add_book.php">
+        <button type="submit" class="btn btn-success add_book_button">Добавить книгу <span>+</span></button>
+      </form>
+    </div>
+{% endblock%}
+
+{% block styles %}
+    <link rel="stylesheet" href="http://localhost/content/css/profile.css">
+{% endblock %}

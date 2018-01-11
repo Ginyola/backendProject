@@ -1,0 +1,19 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+    {% for e in book %}
+        <div>
+          <h1>{{e.title}}</h1>
+          <div class="book_cover">
+            <img src="http://localhost/{{e.image}}" alt="Нет картинки"> 
+          </div>
+          <p class="description_text_main_page">
+            {{e.description}} 
+          </p>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="http://localhost/content/css/book.css">
+{% endblock %}
