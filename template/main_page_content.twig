@@ -1,7 +1,0 @@
-{% if books is empty %}
-    <h1>Ничего не найдено.</h1>
-{% else %}
-    {% for book in books %}
-        {% include "book_on_main_page.twig" %}
-    {% endfor %}
-{% endif %}
