@@ -1,0 +1,23 @@
+label.new_avatar_image input
+{
+    display: none;
+}
+
+#previewAvatar
+{
+    width: 150px;
+    height: 150px;
+    background-color: #b5c5c3;
+    background-image: url('http://localhost/content/users/NoAvatar.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+#previewAvatar:hover
+{
+    opacity: 0.8;
+    outline: 1px solid #7f7fff;
+}

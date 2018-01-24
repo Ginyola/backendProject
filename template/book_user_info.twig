@@ -1,0 +1,10 @@
+{% for e in user %}
+    <h3>{{e.name}}</h3>
+    <div class=" thumbnail popup_avatar" style="background-image: url('http://localhost/{{e.avatar}}');"></div>
+    <div>
+      <p><span>Контакт: </span>{{e.phone_number}}</p>
+      <p><span>Адрес: </span>{{e.address}}</p>
+      <p><span>День рождения: </span>{{e.birthday}}</p>
+      <p><span>Дата регистрации: </span>{{e.registration_time}}</p>
+    </div>
+{% endfor %}
