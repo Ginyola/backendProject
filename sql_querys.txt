@@ -1,0 +1,46 @@
+CREATE TABLE books ( 
+    book_id SERIAL, 
+    title VARCHAR(255),
+	author_id BIGINT UNSIGNED DEFAULT 0,
+	genre_id BIGINT UNSIGNED DEFAULT 0,
+	add_info VARCHAR(255) DEFAULT '',
+	print_date DATETIME DEFAULT 0,
+	description TEXT,
+	add_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	image VARCHAR(255) DEFAULT '',	  
+    PRIMARY KEY (book_id) 
+);
+	
+CREATE TABLE profile ( 
+    profile_id SERIAL, 
+    first_name VARCHAR(255),
+	second_name VARCHAR(255),
+	address VARCHAR(255),
+	phone_number VARCHAR(255),
+	avatar VARCHAR(255),	  
+    PRIMARY KEY (profile_id) //lfnf htubcnhfwbb
+);
+
+CREATE TABLE genre ( 
+    genre_id SERIAL, 
+    genre_en VARCHAR(255),
+    genre_ru VARCHAR(255),	
+    PRIMARY KEY (genre_id) 
+);
+	
+INSERT INTO genre (genre_en, genre_ru) VALUES
+("detective", "Детектив"), ("triller", "Триллер"), ("comedy", "Комедия"), ("romance", "Роман"), ("science", "Научная литература"),
+("learn", "Учебная литература"), ("secret", "Секретные документы"), ("kids", "Для детей");	
+	
+SELECT books.title, books.description, books.image FROM books LEFT JOIN genre USING (genre_id)
+WHERE CONCAT_WS("", genre.genre_ru, genre.genre_en, books.title, books.description) LIKE '%test%';
+
+string(193) "SELECT books.title, books.description, books.image FROM books LEFT JOIN genre USING (genre_id) WHERE CONCAT_WS('', genre.genre_ru, genre.genre_en, books.title, books.description) LIKE '%test%';
+
+CREATE TABLE users (
+	
+);
+
+// info_messages=
+1=book deleted
+2=error with book deleting

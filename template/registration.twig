@@ -1,0 +1,59 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+    <h1>Регистрация нового пользователя</h1>
+    <form enctype="multipart/form-data" action="http://localhost/php/create_user.php" method="POST" class="form-horizontal">
+      <div class="form-group">
+        <div class="col-sm-4">
+          <input name="email" type="text" placeholder="* Email" class="form-control"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-4">
+          <input name="name" type="text" placeholder="* Имя пользователя" class="form-control"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-4">
+          <input name="password" type="text" placeholder="* Пароль" class="form-control"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-4">
+          <label>Введите дату рождения:</label>
+          <input name="birthdate" type="date" placeholder="Дата рождения" class="form-control"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-4">
+          <input name="address" type="text" placeholder="Укажите свой город" class="form-control"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-4">
+          <input name="number" type="text" placeholder="Как с вами связаться (email, телефон...)" class="form-control"/>
+        </div>
+      </div>
+      <!-- Поле MAX_FILE_SIZE должно быть указано до поля загрузки файла -->
+      <input type="hidden" name="MAX_FILE_SIZE" value="3000000" />
+      <!-- Название элемента input определяет имя в массиве $_FILES -->
+      <div class="form-group">
+        <div class="col-sm-4">
+          <label class="new_avatar_image">Аватар
+            <div id="previewAvatar"></div>
+            <input id="previewAvatarInput" name="avatar" type="file">
+          </label>
+          <p class="help-block">Выбирите изображение для профиля</p>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+    </form>
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="http://localhost/content/css/registration.css">
+{% endblock %}
+
+{% block scripts %}
+    <script src="http://localhost/content/js/registration.js"></script>
+{% endblock %}

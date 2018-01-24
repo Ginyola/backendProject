@@ -1,0 +1,43 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+    {% if book is empty %}
+        <h1>Ой, что то пошло не так, отправьте смс на номер 88005553535 и вызовите санитаров</h1>
+    {% else %}
+        {% for e in book %}
+            <div>
+              <h1>{{e.title}}</h1>
+              <div class="book_cover_page" 
+                   {% if e.image is not empty %}
+                       style="background-image: url('http://localhost/{{e.image}}');"
+                   {% endif %} 
+                   >  
+              </div>
+              <div class="description_text_book_page">
+                <p><span style="font-weight: bold;">Автор: </span>{{e.author}}</p>      
+                <p><span style="font-weight: bold;">Год издания: </span>{{e.print_date}}</p>    
+                <p><span style="font-weight: bold;">Краткое описание: </span>{{e.description}}</p>
+                <p><span style="font-weight: bold;">Дополнительная информация: </span>{{e.add_info}}</p>     
+                {% if user is not empty %}
+                    {% include "logged_book_content.twig" %}
+                {% else %}
+                </div>
+              {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endblock %}
+
+    {% block styles %}
+        <link rel="stylesheet" href="http://localhost/content/css/book.css">
+    {% endblock %}
+
+{% if user is not empty %}
+    {% block scripts %}
+        {% if role == 'admin' %}
+            <script src="http://localhost/content/js/profile.js"></script>
+            <script src="http://localhost/content/js/admin.js"></script>
+        {% else %}
+            <script src="http://localhost/content/js/profile.js"></script>
+        {% endif %}
+    {% endblock %}
+{% endif %}
