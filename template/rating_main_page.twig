@@ -1,0 +1,7 @@
+<div id="rate_{{book.book_id}}" class="rateit rate_margin_main" data-rateit-value="
+     {% if book.rate is not empty %}
+         {{book.rate}}
+     {% else %}
+         0
+     {% endif %}
+     " data-rateit-ispreset="true" data-rateit-readonly="true"></div>

@@ -6,4 +6,15 @@ $('#profileDataButton').click(function () {
     }
 });
 
+//
+//$.ajax({
+//    url: 'rating.php',
+//    data: {book_id: productID},
+//    type: 'POST',
+//    success: function (results) {
+//        $('.rateit').rateit('value', (results));
+//    }
+//
+//});
+
 

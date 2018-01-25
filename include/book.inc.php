@@ -78,7 +78,15 @@ function dbUpdateCover ($id, $path){
 }
 
 function getRecentBooks() {
-    $query = 'SELECT book_id, title, author, print_date, image FROM books LEFT JOIN image USING (book_id) WHERE books.deleted = 0 ORDER BY book_id DESC;';
+    $query = 'SELECT books.book_id, books.title, books.author, books.print_date, image.image, rate'
+            . ' FROM books '
+            . ' LEFT JOIN image USING (book_id)'
+            . ' LEFT JOIN ('
+            . ' SELECT book_id, AVG(rating) as rate FROM rating GROUP BY book_id'
+            . ') as sub_table'
+            . ' USING (book_id)'
+            . ' WHERE books.deleted = 0'
+            . ' ORDER BY book_id DESC;';
     $books = dbQueryGetResult($query);
 
     return (!empty($books) ? $books : []);
@@ -98,11 +106,18 @@ function getBooksGenre() {
     return (!empty($genre) ? $genre : []);
 }
 
+function getBookRating($id) {
+    $query = 'SELECT AVG(rating) FROM rating WHERE book_id = ' . dbQuote($id) . ';';
+    $result = dbQueryGetResult($query);
+    
+    return (!empty($result) ? $result : 0);
+}
+
 function getBooksById($id) {
     $query = 'SELECT * FROM books LEFT JOIN image USING (book_id) WHERE book_id = ' . dbQuote($id) . ' AND books.deleted = 0;';
-    $genre = dbQueryGetResult($query);
+    $result = dbQueryGetResult($query);
 
-    return (!empty($genre) ? $genre : []);
+    return (!empty($result) ? $result : []);
 }
 
 function getBooksByGenre($id) {

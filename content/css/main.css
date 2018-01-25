@@ -103,7 +103,7 @@ body
 
 .book_on_main_page
 {
-    height: 100%;
+    height: 200px;
     color: #222222;
     padding: 5px;
     overflow: hidden;
@@ -119,6 +119,7 @@ body
 .book_cover
 {
     height: 170px;
+    width: 116px;
     float: left;
     margin-right: 5px;
 }
@@ -126,7 +127,11 @@ body
 div.book_cover img
 {
     height: inherit;
+    width: 116px;
     display: block;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('http://localhost/content/images/NoCover.jpg');
 }
 
 .description_main_page
@@ -142,54 +147,11 @@ div.book_cover img
 
 }
 
-/* Tooltip container */
-.tooltip {
-    /*    position: relative;
-        display: inline-block;
-        border-bottom: 1px dotted black;  If you want dots under the hoverable text */
+.rate_margin_main
+{
+    margin-top: 4px;
+    margin-left: 17px;
 }
-
-/* Tooltip text */
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-
-    /* Position the tooltip text */
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -60px;
-
-    /* Fade in tooltip */
-    opacity: 0;
-    transition: opacity 1s;
-}
-
-/* Tooltip arrow */
-.tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #555 transparent transparent transparent;
-}
-
-/* Show the tooltip text when you mouse over the tooltip container */
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-}
-/*endtooltip*/
-
 /*content end*/
 
 .clear
