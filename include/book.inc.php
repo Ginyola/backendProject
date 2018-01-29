@@ -47,8 +47,9 @@ function untieUserWithBook($bookId, $userId) {
     $result = dbQuery($query);
 }
 
-function getBookOwners($bookId) {
-    $query = 'SELECT user_id, name, avatar FROM offer LEFT JOIN users USING(user_id) WHERE book_id = "' . dbQuote($bookId) . '";';
+function getBookOwners($bookId, $offer) {
+    $query = 'SELECT user_id, name, avatar FROM offer LEFT JOIN users USING(user_id)'
+            . ' WHERE book_id = "' . dbQuote($bookId) . '" AND offer = "' . dbQuote($offer) . '";';
     $result = dbQueryGetResult($query);
 
     return (!empty($result) ? $result : []);
@@ -170,4 +171,13 @@ function updateBookRating($userId, $bookId, $rating) {
                 . ' ("' . dbQuote($userId) . '","' . dbQuote($bookId) . '", "' . dbQuote($rating) . '")';
     };
     dbQuery($query);
+}
+
+function changeBookStatus($userId, $bookId, $offer)
+{
+    $query = 'UPDATE offer SET offer = "' . dbQuote($offer) . '" WHERE'
+            . ' user_id = "' . dbQuote($userId) . '" AND book_id = "' . dbQuote($bookId) . '";';
+    $result = dbQuery($query);
+//    $result = ($result != 0) ? 3 : 4;
+//    return $result;
 }

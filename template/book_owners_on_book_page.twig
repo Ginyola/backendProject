@@ -1,15 +1,6 @@
-<h4 style="margin-top: 20px;">Владельцы книги</h4>
-<div class="users_with_books">
-  {% for u in owner %}
-      <div class="user_contact" id="user_{{u.user_id}}">
-        <div class="owner_avatar" style="background-image: url('http://localhost/{{u.avatar}}');"></div>
-        <span>{{u.name}}</span>
-        <input type="hidden" value="{{u.user_id}}">
-      </div>
-  {% endfor %}
-</div>
-<div id="userInfoWindow" class="user_info_window">
-  <div id="replaceAjax">
-  </div>
-  <div id="closeUserInfo" class="close_user_info">X</div>
-</div>
+<h3 style="margin-top: 20px;">Владельцы книги</h3>
+<h4>Свободные экземпляры книги:</h4>
+{% include 'current_availible.twig'%}
+<h4>Занятые экземпляры книги:</h4>
+{% include 'current_unavailible.twig'%}
+

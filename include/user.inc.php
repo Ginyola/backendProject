@@ -58,7 +58,7 @@ function findUserByLogin($login, $pass) {
 }
 
 function getUserBooks($userId) {
-    $query = 'SELECT books.book_id, books.title, books.add_date 
+    $query = 'SELECT books.book_id, books.title, books.add_date, offer.offer 
         FROM offer LEFT JOIN books USING(book_id)
         WHERE offer.user_id = ' . dbQuote($userId) . ';';
     $result = dbQueryGetResult($query);

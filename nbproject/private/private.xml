@@ -7,17 +7,24 @@
             <file>file:/C:/dev/projects/local/template/book_on_main_page.twig</file>
             <file>file:/C:/dev/projects/local/content/js/rateit.js</file>
             <file>file:/C:/dev/projects/local/template/rating_book.twig</file>
-            <file>file:/C:/dev/projects/local/template/layout.twig</file>
-            <file>file:/C:/dev/projects/local/template/head.twig</file>
-            <file>file:/C:/dev/projects/local/content/css/main.css</file>
+            <file>file:/C:/dev/projects/local/template/table_books.twig</file>
+            <file>file:/C:/dev/projects/local/content/js/book.js</file>
             <file>file:/C:/dev/projects/local/content/js/main.js</file>
+            <file>file:/C:/dev/projects/local/php/profile.php</file>
             <file>file:/C:/dev/projects/local/php/rating.php</file>
+            <file>file:/C:/dev/projects/local/template/logged_book_content.twig</file>
             <file>file:/C:/dev/projects/local/include/book.inc.php</file>
+            <file>file:/C:/dev/projects/local/include/user.inc.php</file>
             <file>file:/C:/dev/projects/local/content/js/profile.js</file>
-            <file>file:/C:/dev/projects/local/template/rating_main_page.twig</file>
+            <file>file:/C:/dev/projects/local/php/book.php</file>
             <file>file:/C:/dev/projects/local/content/css/book.css</file>
+            <file>file:/C:/dev/projects/local/template/index.twig</file>
+            <file>file:/C:/dev/projects/local/template/book_owners_on_book_page.twig</file>
             <file>file:/C:/dev/projects/local/template/book.twig</file>
-            <file>file:/C:/dev/projects/local/include/auth.inc.php</file>
+            <file>file:/C:/dev/projects/local/template/current_unavailible.twig</file>
+            <file>file:/C:/dev/projects/local/template/current_availible.twig</file>
+            <file>file:/C:/dev/projects/local/php/change_book_status.php</file>
+            <file>file:/C:/dev/projects/local/template/book_buttons.twig</file>
         </group>
     </open-files>
 </project-private>

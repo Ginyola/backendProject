@@ -1,9 +1,6 @@
 <?php
 
-$cwd = getcwd();
-
-chdir("../");
-require_once("include/common.inc.php");
+require_once("../include/common.inc.php");
 
 requireAuth();
 
@@ -18,6 +15,4 @@ $vars = array("user" => $user,
 
 
 echo ($role == "admin" ) ? (getView("admin.twig", $vars)) : (getView("profile.twig", $vars)); 
-
-chdir($cwd);
 
