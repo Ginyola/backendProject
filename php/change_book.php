@@ -13,6 +13,7 @@ $id = isset($_POST['id']) ? $_POST['id'] : [];
 $book = getBooksById($id);
 
 $book[0]['print_date']=stristr($book[0]['print_date'], ' ', true);
+var_dump($book);
 $vars = array(
     "book" => $book,
     //"genre" => $genre,

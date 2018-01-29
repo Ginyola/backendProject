@@ -79,6 +79,9 @@ function getUserInfo($id)
     $query = 'SELECT name, address, avatar, phone_number, birthday, registration_time '
             . 'FROM users WHERE user_id = "' . dbQuote($id) . '";';
     $result = dbQueryGetResult($query);
-    
+    if(!empty($result))
+    {
+        $result[0]['birthday']=stristr($result[0]['birthday'], ' ', true);
+    }
     return (!empty($result) ? $result : []);
 }

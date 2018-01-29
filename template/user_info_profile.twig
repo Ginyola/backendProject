@@ -34,18 +34,7 @@
     {% if user_books is empty %}
         <p>Нет книг</p>
     {% else %}
-        <table class="user_books_table" cellpadding="5">
-          <tr class="user_books_table_row">
-            <th class="user_books_table_number"> № </th>
-            <th class="user_books_table_cell"> Название книги </th>
-            <th class="user_books_table_cell"> Дата добавления </th>
-          </tr>
-          {% for i in user_books %}
-              <tr class="user_books_table_row">
-                <td>{{ loop.index }}</td><td><a href="http://localhost/php/book.php?id={{i.book_id}}">{{i.title}}</td><td>{{i.add_date}}</td>
-              </tr>
-          {% endfor %}
-        </table>
+        {% include "table_books.twig" %}
     {% endif %}
   </div>  
   <form action="http://localhost/php/add_book.php">

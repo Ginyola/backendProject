@@ -1,4 +1,5 @@
 ﻿<?php
+
 $cwd = getcwd();
 
 require_once("../include/common.inc.php");

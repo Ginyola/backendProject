@@ -10,7 +10,7 @@ body
     padding-top: 70px;
     overflow-x: hidden;
     overflow-y: scroll;
-    background: linear-gradient(to bottom right, #afc2be, #ffffff);
+    background: linear-gradient(to bottom right, #ffffea, #ffffff);
 }
 
 .content
@@ -107,12 +107,12 @@ body
     color: #222222;
     padding: 5px;
     overflow: hidden;
-    background-color: #b5c5c3;
+    background-color: #FFFAFF;
 }
 
 .book_on_main_page:hover
 {
-    background-color: #a2cec9;
+    background-color: #F3F7FF;
     cursor: pointer;
 }
 
@@ -134,23 +134,29 @@ div.book_cover img
     background-image: url('http://localhost/content/images/NoCover.jpg');
 }
 
-.description_main_page
+.description_main_page h4
 {
-    
+    margin-top: 3px;
 }
 
 .description_main_page h4, p 
 {
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space: pre-line;
 
+}
+
+.description_main_page span
+{
+    font-weight: bold;
 }
 
 .rate_margin_main
 {
     margin-top: 4px;
-    margin-left: 17px;
+    margin-right: 17px;
+    float: right;
 }
 /*content end*/
 

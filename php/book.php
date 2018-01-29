@@ -14,6 +14,7 @@ $role = '';
 if (isset($_GET["id"])) {
     $id = intval($_GET["id"]);
     $book = getBooksById($id);
+    $book[0]['print_date']=stristr($book[0]['print_date'], ' ', true);
 }
 
 if (isset($_SESSION['user'])) {
@@ -24,8 +25,6 @@ if (isset($_SESSION['user'])) {
 }
 
 $genre = getBooksGenre();
-
-
 
 
 $vars = array(

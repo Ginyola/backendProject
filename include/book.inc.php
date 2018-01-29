@@ -19,17 +19,17 @@ function dbAddBookToLibary($book, $userId) {
     //return (!empty($result) ? 0 : 1);//ToDo always empty
 }
 
-function dbUpdateBookToLibary($book){
+function dbUpdateBookToLibary($book) {
     $query = 'UPDATE books SET title="' . dbQuote($book["title"]) . '",'
             . ' author="' . dbQuote($book["author"]) . '",'
             . ' genre_id="' . dbQuote($book["genre_id"]) . '",'
             . ' add_info = "' . dbQuote($book["add_info"]) . '",'
             . ' print_date = "' . dbQuote($book["print_date"]) . '",'
-            . ' description = "' . dbQuote($book["description"]). '" ' 
+            . ' description = "' . dbQuote($book["description"]) . '" '
             . 'WHERE book_id = "' . dbQuote($book["book_id"]) . '";';
 
     $result = dbQuery($query);
-    
+
     if ($result != 0) {
         echo "Книга обновлена";
     } else {
@@ -47,8 +47,7 @@ function untieUserWithBook($bookId, $userId) {
     $result = dbQuery($query);
 }
 
-function getBookOwners($bookId)
-{
+function getBookOwners($bookId) {
     $query = 'SELECT user_id, name, avatar FROM offer LEFT JOIN users USING(user_id) WHERE book_id = "' . dbQuote($bookId) . '";';
     $result = dbQueryGetResult($query);
 
@@ -66,9 +65,9 @@ function dbAddCover($id, $path) {
     }
 }
 
-function dbUpdateCover ($id, $path){
-    $query = 'UPDATE image SET image ="'. dbQuote($path) . '"'
-            . 'WHERE book_id = "'. dbQuote($id). '";';
+function dbUpdateCover($id, $path) {
+    $query = 'UPDATE image SET image ="' . dbQuote($path) . '"'
+            . 'WHERE book_id = "' . dbQuote($id) . '";';
     $result = dbQuery($query);
     if ($result != 0) {
         echo "Ссылка картинки обновлена";
@@ -78,9 +77,10 @@ function dbUpdateCover ($id, $path){
 }
 
 function getRecentBooks() {
-    $query = 'SELECT books.book_id, books.title, books.author, books.print_date, image.image, rate'
+    $query = 'SELECT books.book_id, books.title, books.author, YEAR(books.print_date) as print_date, image.image, rate, genre.genre_ru'
             . ' FROM books '
             . ' LEFT JOIN image USING (book_id)'
+            . ' LEFT JOIN genre USING (genre_id)'
             . ' LEFT JOIN ('
             . ' SELECT book_id, AVG(rating) as rate FROM rating GROUP BY book_id'
             . ') as sub_table'
@@ -107,14 +107,14 @@ function getBooksGenre() {
 }
 
 function getBookRating($id) {
-    $query = 'SELECT AVG(rating) FROM rating WHERE book_id = ' . dbQuote($id) . ';';
+    $query = 'SELECT AVG(rating) as rate FROM rating WHERE book_id = "' . dbQuote($id) . '";';
     $result = dbQueryGetResult($query);
-    
+
     return (!empty($result) ? $result : 0);
 }
 
 function getBooksById($id) {
-    $query = 'SELECT * FROM books LEFT JOIN image USING (book_id) WHERE book_id = ' . dbQuote($id) . ' AND books.deleted = 0;';
+    $query = 'SELECT * FROM books LEFT JOIN image USING (book_id) WHERE book_id = "' . dbQuote($id) . '" AND books.deleted = 0;';
     $result = dbQueryGetResult($query);
 
     return (!empty($result) ? $result : []);
@@ -135,26 +135,39 @@ function getBooksBySubString($str) {
             . " LEFT JOIN genre USING (genre_id) "
             . "WHERE CONCAT_WS"
             . "('', genre.genre_ru, genre.genre_en, books.title, books.description, books.author) "
-            . "LIKE '%" . dbQuote($substr) . "%' AND books.deleted = 0;"; 
+            . "LIKE '%" . dbQuote($substr) . "%' AND books.deleted = 0;";
     $books = dbQueryGetResult($query);
 
     return (!empty($books) ? $books : []);
 }
 
-function bookInPosession($userId, $bookId)
-{
+function bookInPosession($userId, $bookId) {
     $query = 'SELECT offer_id FROM offer WHERE user_id =' . dbQuote($userId) . ' AND book_id = ' . dbQuote($bookId) . ';';
     $result = dbQueryGetResult($query);
-    
+
     return (!empty($result) ? 1 : 0);
 }
 
-function deleteBook($bookId) //1 -deleted, 2 - not
-{
-    $query ='UPDATE books SET deleted = 1 WHERE book_id = "'. dbQuote($bookId).'";';
+function deleteBook($bookId) { //1 -deleted, 2 - not
+    $query = 'UPDATE books SET deleted = 1 WHERE book_id = "' . dbQuote($bookId) . '";';
     $result = dbQuery($query);
-    
+
     $result = ($result != 0) ? 1 : 2;
-    
+
     return $result;
+}
+
+function updateBookRating($userId, $bookId, $rating) {
+    $query = 'SELECT * FROM rating WHERE user_id = "' . dbQuote($userId) . '" AND book_id = "' . dbQuote($bookId) . '";';
+    $result = dbQueryGetResult($query);
+
+    if (!empty($result)) {
+        $query = 'UPDATE rating SET rating = ' . dbQuote($rating) . ' WHERE'
+                . ' book_id = "' . dbQuote($bookId) . '" AND '
+                . ' user_id = "' . dbQuote($userId) . '";';
+    } else {
+        $query = 'INSERT INTO rating (user_id, book_id, rating) VALUES'
+                . ' ("' . dbQuote($userId) . '","' . dbQuote($bookId) . '", "' . dbQuote($rating) . '")';
+    };
+    dbQuery($query);
 }

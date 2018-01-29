@@ -36,10 +36,9 @@
 {% if user is not empty %}
     {% block scripts %}
         {% if role == 'admin' %}
-            <script src="http://localhost/content/js/profile.js"></script>
             <script src="http://localhost/content/js/admin.js"></script>
-        {% else %}
-            <script src="http://localhost/content/js/profile.js"></script>
         {% endif %}
+        <script src="http://localhost/content/js/profile.js"></script>
+        <script src="http://localhost/content/js/book.js"></script>
     {% endblock %}
 {% endif %}

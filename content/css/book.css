@@ -142,6 +142,8 @@ div.book_cover_page img
     transition-duration: 0.5s;
     z-index: -1;
     overflow-y: hidden;
+    border: 1px solid #000000;
+    border-radius: 4px;
 }
 
 .user_info_window h3
