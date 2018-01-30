@@ -26,3 +26,28 @@ label.label_upload_image input
     opacity: 0.8;
     outline: 1px solid #7f7fff;
 }
+
+.descr .btn-group-vertical>.btn-group:after, .btn-toolbar:after, .clearfix:after, .container-fluid:after, .container:after, .dl-horizontal dd:after, .form-horizontal .form-group:after, .modal-footer:after, .modal-header:after, .nav:after, .navbar-collapse:after, .navbar-header:after, .navbar:after, .pager:after, .panel-body:after, .row:after
+{
+    clear: none;
+}
+
+.descr input, select
+{
+    margin-bottom: 8px;
+}
+
+.add_book_btn
+{
+    margin-left: 230px;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 767px) 
+{   
+    
+.add_book_btn
+{
+    margin-left: 0;
+}
+}

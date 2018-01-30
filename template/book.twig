@@ -6,7 +6,7 @@
     {% else %}
         {% for e in book %}
             <div>
-              <h1>{{e.title}}</h1>
+              <h1 style="margin-top: 0;">{{e.title}}</h1>
               <div class="book_cover_page" 
                    {% if e.image is not empty %}
                        style="background-image: url('http://localhost/{{e.image}}');"
@@ -14,31 +14,34 @@
                    >
               </div>
               <div class="description_text_book_page">
-                <h4>Рейтинг:</h4>
+                <h4 style="margin-top: 0; margin-bottom: 0;">Рейтинг:</h4>
                 {% include "rating_book.twig" %}
                 <p><span style="font-weight: bold;">Автор: </span>{{e.author}}</p>      
-                <p><span style="font-weight: bold;">Год издания: </span>{{e.print_date}}</p>    
-                <p><span style="font-weight: bold;">Краткое описание: </span>{{e.description}}</p>
-                <p><span style="font-weight: bold;">Дополнительная информация: </span>{{e.add_info}}</p>     
+                <p><span style="font-weight: bold;">Год издания: </span>{{e.print_date}}</p>   
+                <p><span style="font-weight: bold;">Дополнительная информация: </span>{{e.add_info}}</p> 
+                <p><span style="font-weight: bold;">Краткое описание: </span>{{e.description}}</p>    
                 {% if user is not empty %}
                     {% include "logged_book_content.twig" %}
                 {% else %}
+                    {% include "book_comments.twig" %}
                 </div>
               {% endif %}
+
             {% endfor %}
         {% endif %}
+
     {% endblock %}
 
     {% block styles %}
         <link rel="stylesheet" href="http://localhost/content/css/book.css">
     {% endblock %}
 
-{% if user is not empty %}
-    {% block scripts %}
-        {% if role == 'admin' %}
-            <script src="http://localhost/content/js/admin.js"></script>
-        {% endif %}
-        <script src="http://localhost/content/js/profile.js"></script>
-        <script src="http://localhost/content/js/book.js"></script>
-    {% endblock %}
-{% endif %}
+    {% if user is not empty %}
+        {% block scripts %}
+            {% if role == 'admin' %}
+                <script src="http://localhost/content/js/admin.js"></script>
+            {% endif %}
+            <script src="http://localhost/content/js/profile.js"></script>
+            <script src="http://localhost/content/js/book.js"></script>
+        {% endblock %}
+    {% endif %}

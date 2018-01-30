@@ -1,10 +1,9 @@
 <div class="users_with_books">
   {% if owner is empty%}
-      <h4>Нет данных</h4>
   {% else %}
       {% for u in owner %}
           <div class="user_contact" id="user_{{u.user_id}}">
-            <div class="owner_avatar" style="background-image: url('http://localhost/{{u.avatar}}');"></div>
+            <div class="owner_avatar center-block" style="background-image: url('http://localhost/{{u.avatar}}');"></div>
             <span>{{u.name}}</span>
             <input type="hidden" value="{{u.user_id}}">
           </div>

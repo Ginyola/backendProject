@@ -1,3 +1,9 @@
 <input type="range" step="1" id="book_rating">
 <div id= "book_rating_div" class="rateit" data-rateit-mode="font"  style="font-size:30px"
-     data-rateit-resetable="false" data-rateit-backingfld="#book_rating"></div>
+     data-rateit-resetable="false" data-rateit-backingfld="#book_rating" 
+     
+     {% if user is empty%}
+         data-rateit-readonly="true" 
+     {% endif %} 
+
+     ></div>

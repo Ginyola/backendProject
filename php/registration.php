@@ -9,7 +9,6 @@ require_once("include/common.inc.php");
 $user = isset($_SESSION['user']) ? $_SESSION['user'] : [];
 
 $vars = array(
-    "genre" => $genre,
     "user" => $user);
 
 echo getView("registration.twig", $vars);

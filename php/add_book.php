@@ -1,7 +1,5 @@
 ﻿<?php
 
-$cwd = getcwd();
-
 require_once("../include/common.inc.php");
 requireAuth();
 
@@ -14,5 +12,3 @@ $vars = array(
     "user" => $user);
 
 echo getView("add_book.twig", $vars);
-
-chdir($cwd);

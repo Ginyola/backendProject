@@ -3,28 +3,41 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/dev/projects/local/index.php</file>
+            <file>file:/C:/dev/projects/local/template/footer.twig</file>
             <file>file:/C:/dev/projects/local/template/book_on_main_page.twig</file>
-            <file>file:/C:/dev/projects/local/content/js/rateit.js</file>
-            <file>file:/C:/dev/projects/local/template/rating_book.twig</file>
-            <file>file:/C:/dev/projects/local/template/table_books.twig</file>
-            <file>file:/C:/dev/projects/local/content/js/book.js</file>
-            <file>file:/C:/dev/projects/local/content/js/main.js</file>
+            <file>file:/C:/dev/projects/local/php/add_existing_book.php</file>
             <file>file:/C:/dev/projects/local/php/profile.php</file>
-            <file>file:/C:/dev/projects/local/php/rating.php</file>
-            <file>file:/C:/dev/projects/local/template/logged_book_content.twig</file>
-            <file>file:/C:/dev/projects/local/include/book.inc.php</file>
+            <file>file:/C:/dev/projects/local/php/add_comment.php</file>
+            <file>file:/C:/dev/projects/local/template/book_comments.twig</file>
             <file>file:/C:/dev/projects/local/include/user.inc.php</file>
-            <file>file:/C:/dev/projects/local/content/js/profile.js</file>
             <file>file:/C:/dev/projects/local/php/book.php</file>
-            <file>file:/C:/dev/projects/local/content/css/book.css</file>
             <file>file:/C:/dev/projects/local/template/index.twig</file>
             <file>file:/C:/dev/projects/local/template/book_owners_on_book_page.twig</file>
             <file>file:/C:/dev/projects/local/template/book.twig</file>
+            <file>file:/C:/dev/projects/local/template/change_book.twig</file>
             <file>file:/C:/dev/projects/local/template/current_unavailible.twig</file>
+            <file>file:/C:/dev/projects/local/template/book_buttons.twig</file>
+            <file>file:/C:/dev/projects/local/index.php</file>
+            <file>file:/C:/dev/projects/local/content/js/rateit.js</file>
+            <file>file:/C:/dev/projects/local/template/rating_book.twig</file>
+            <file>file:/C:/dev/projects/local/php/response_change_book.php</file>
+            <file>file:/C:/dev/projects/local/php/registration.php</file>
+            <file>file:/C:/dev/projects/local/template/table_books.twig</file>
+            <file>file:/C:/dev/projects/local/content/css/add_book.css</file>
+            <file>file:/C:/dev/projects/local/content/js/book.js</file>
+            <file>file:/C:/dev/projects/local/content/js/main.js</file>
+            <file>file:/C:/dev/projects/local/php/rating.php</file>
+            <file>file:/C:/dev/projects/local/template/logged_book_content.twig</file>
+            <file>file:/C:/dev/projects/local/template/add_book.twig</file>
+            <file>file:/C:/dev/projects/local/php/change_book.php</file>
+            <file>file:/C:/dev/projects/local/template/add_comment_form.twig</file>
+            <file>file:/C:/dev/projects/local/include/book.inc.php</file>
+            <file>file:/C:/dev/projects/local/php/add_book.php</file>
+            <file>file:/C:/dev/projects/local/content/js/profile.js</file>
+            <file>file:/C:/dev/projects/local/template/rating_main_page.twig</file>
+            <file>file:/C:/dev/projects/local/content/css/book.css</file>
             <file>file:/C:/dev/projects/local/template/current_availible.twig</file>
             <file>file:/C:/dev/projects/local/php/change_book_status.php</file>
-            <file>file:/C:/dev/projects/local/template/book_buttons.twig</file>
         </group>
     </open-files>
 </project-private>
