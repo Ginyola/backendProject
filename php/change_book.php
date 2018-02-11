@@ -1,9 +1,6 @@
 <?php
 
-$cwd = getcwd();
-
-chdir("../");
-require_once("include/common.inc.php");
+require_once("../include/common.inc.php");
 requireAuth();
 
 //$genre = getBooksGenre();
@@ -20,5 +17,3 @@ $vars = array(
     "user" => $user);
 
 echo getView("change_book.twig", $vars);
-
-chdir($cwd);

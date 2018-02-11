@@ -1,10 +1,10 @@
 ﻿<?php
-chdir('../');
-header("refresh: 3; url=http://localhost/index.php");
-require_once("include/common.inc.php");
+
+header("Location: http://localhost/php/profile.php");
+require_once("../include/common.inc.php");
 requireAuth();
 
-define('UPLOAD_DIR', "content/images/");
+define('UPLOAD_DIR', "../content/images/");
 
 $uploadedFiles = & $_FILES["cover"];
 $userId = isset($_SESSION['user']['user_id']) ? $_SESSION['user']['user_id'] : [];
@@ -15,7 +15,6 @@ if (empty($userId))
     exit(0);
 }
 
-//ToDo: values;
 $author = 0;
 $genre_id = 0;
 $add_info = "";

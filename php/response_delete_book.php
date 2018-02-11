@@ -1,6 +1,6 @@
 <?php
 
-header("refresh: 0; url=http://localhost/index.php");
+header("Location: http://localhost/index.php");
 require_once("../include/common.inc.php");
 requireAuth();
 
@@ -13,5 +13,5 @@ if ($role == 'admin') {
         $_SESSION["info_message"] = deleteBook($bookId);
     }
 } else {
-    echo "Недостаточно прав";
+    $_SESSION["info_message"] = 99;
 }

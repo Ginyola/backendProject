@@ -15,6 +15,19 @@ function dbAddNewUser($user) {
     }
 }
 
+function dbUpdateUser($userId, $data)
+{
+    $query = 'UPDATE users SET name = "' . dbQuote($data["name"]). '", address = "' . dbQuote($data["address"]). '",'
+            . ' phone_number = "' . dbQuote($data["phone_number"]) . '" WHERE user_id = "' . dbQuote($userId) .  '";';
+    var_dump($query);
+    $result = dbQuery($query);
+    if ($result != 0) {
+        $_SESSION["info_message"] = 10;
+    } else {
+        $_SESSION["info_message"] = 11;
+    }
+}
+
 function dbAddNewUserAvatar($id, $path) {
     $query = 'UPDATE users SET avatar = "' . dbQuote($path) . '"'
             . 'WHERE user_id = ' . dbQuote($id) . ';';
@@ -50,17 +63,17 @@ function findUserByLogin($login, $pass) {
 
             return $userInfo;
         } else {
-            echo "Пользователь с Логином - " . $login . " и введённым паролем не найден";
+            $_SESSION["info_message"] = 4;
         }
     } else {
-        echo "Пользователь с Логином - " . $login . " не найден"; //ToDo Отличаются сообщения для отладки - убрать
+        $_SESSION["info_message"] = 4; //ToDo: Дублирование
     }
 }
 
 function getUserBooks($userId) {
     $query = 'SELECT books.book_id, books.title, books.add_date, offer.offer 
         FROM offer LEFT JOIN books USING(book_id)
-        WHERE offer.user_id = ' . dbQuote($userId) . ';';
+        WHERE offer.user_id = ' . dbQuote($userId) . ' AND books.deleted = 0;';
     $result = dbQueryGetResult($query);
 
     return (!empty($result) ? $result : []);

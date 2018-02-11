@@ -164,3 +164,8 @@ div.book_cover img
 {
     clear: both;
 }
+
+#indexPagination
+{
+    display: none;
+}

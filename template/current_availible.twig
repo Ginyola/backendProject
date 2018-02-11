@@ -1,15 +1,22 @@
-<div class="users_with_books">
-  {% if owner is empty%}
-  {% else %}
+
+
+{% if owner is empty%}
+
+{% else %}
+    <h4 style="margin-top: 30px; font-weight: bold;">Свободные экземпляры книги:</h4>
+    <div class="users_with_books">
       {% for u in owner %}
+
           <div class="user_contact" id="user_{{u.user_id}}">
             <div class="owner_avatar center-block" style="background-image: url('http://localhost/{{u.avatar}}');"></div>
             <span>{{u.name}}</span>
             <input type="hidden" value="{{u.user_id}}">
           </div>
+
       {% endfor %}
-  {% endif %}
-</div>
+    </div>
+{% endif %}
+
 <div id="userInfoWindow" class="user_info_window">
   <div id="replaceAjax">
   </div>

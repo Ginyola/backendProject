@@ -1,11 +1,13 @@
-<div class="add_comment">
-  <h4 style="margin-top: 10px;">Добавить комментарий</h4>
-  <form onsubmit="setTimeout(function () {
-              window.location.reload();
-          }, 10);"
-        class="col-sm-8" style="padding-left: 0;" action="http://localhost/php/add_comment.php" method="post">
-    <textarea type="text" name="comment_text" placeholder="Введите отзыв" class="form-control" ></textarea>
-    <input type="hidden" name="book_id" value="{{e.book_id}}">
-    <button type="submit" class="btn btn-default add_comment_btn">Добавить комментарий</button>
-  </form>
-</div>
+{% if user is not empty %}
+    <div class="add_comment">
+      <h4 style="margin-top: 25px;">Добавить комментарий</h4>
+      <form onsubmit="ReloadPage();"
+            class="col-sm-8" style="padding-left: 0;" action="http://localhost/php/add_comment.php" method="post">
+        <textarea type="text" name="comment_text" placeholder="Введите отзыв" class="form-control" required></textarea>
+        <input type="hidden" name="book_id" value="{{e.book_id}}">
+        <button type="submit" class="btn btn-default add_comment_btn">Добавить комментарий</button>
+      </form>
+    </div>
+{% else %}
+    <h4><small>Чтобы оставить комментарий нужно войти.</small></h4>
+{% endif %}

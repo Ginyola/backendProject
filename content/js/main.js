@@ -6,17 +6,6 @@ $('#profileDataButton').click(function () {
     }
 });
 
-//
-//$.ajax({
-//    url: 'rating.php',
-//    data: {book_id: productID},
-//    type: 'POST',
-//    success: function (results) {
-//        $('.rateit').rateit('value', (results));
-//    }
-//
-//});
-
 function GetURLParameter(sParam)
 {
     var sPageURL = window.location.search.substring(1);
@@ -29,4 +18,13 @@ function GetURLParameter(sParam)
             return sParameterName[1];
         }
     }
+    
+    return "";
+}
+
+function ReloadPage()
+{
+    setTimeout(function () {
+              window.location.reload();
+          }, 10);
 }

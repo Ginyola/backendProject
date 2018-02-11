@@ -19,8 +19,7 @@
             {%else%}
                 <div class="col-xs-18 col-md-12">
             {% endif %}
-                {% block info_messages %}
-                {% endblock %}
+                {% include "info_messages.twig" %}
                 {% block content %}
                 {% endblock %}
                 </div>

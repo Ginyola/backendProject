@@ -1,7 +1,63 @@
-{% if info_message == '1' %}
-    <h2 style="text-align: center;">Книга удалена</h2>
-{% endif %}
+{% if info_message is not empty %}
+    <div class="alert
+         {% if info_message in [6, 7, 10] %}
+             alert-success
+         {% endif %}
+         {% if info_message in [1 ,2, 5, 8, 9, 11, 99] %}
+             alert-danger
+         {% endif %}
+         {% if info_message in [3, 4] %}
+             alert-warning
+         {% endif %}   
+         alert-dismissible" role="alert" style="width: 80%;">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
-{% if info_message == '2' %}
-    <h2 style="text-align: center;">Книга не удалена</h2>
+      {% if info_message == '1' %}
+          <strong>Внимание!</strong> Книга удалена!
+      {% endif %}
+
+      {% if info_message == '2' %}
+          <strong>Внимание!</strong> Книга не удалена!
+      {% endif %}
+
+      {% if info_message == '3' %}
+          <strong>Внимание!</strong> Ничего не найдено
+      {% endif %}
+      
+      {% if info_message == '4' %}
+          <strong>Ой!</strong> Пользователь с таким логином и паролем не найден!
+      {% endif %}
+
+      {% if info_message == '5' %}
+          <strong>Внимание!</strong> Книга не добавлена!
+      {% endif %}
+      
+      {% if info_message == '6' %}
+          <strong>Ура!</strong> Книга добавлена!
+      {% endif %}
+      
+      {% if info_message == '7' %}
+          <strong>Успех!</strong> Книга обновлена!
+      {% endif %}
+      
+      {% if info_message == '8' %}
+          <strong>Ой!</strong> Книга не обновлена!
+      {% endif %}
+      
+      {% if info_message == '9' %}
+          <strong>Ахтунг!</strong> Пользователь с таким Email уже существует!
+      {% endif %}
+      
+      {% if info_message == '10' %}
+          <strong>Успех!</strong> Информация о пользователе обновлена.
+      {% endif %}
+      
+      {% if info_message == '11' %}
+          <strong>:(</strong> Ошибочка!
+      {% endif %}
+      
+      {% if info_message == '99' %}
+          <strong>ОЙ-ОЙ!</strong> У вас нет прав на это!
+      {% endif %}
+    </div>
 {% endif %}

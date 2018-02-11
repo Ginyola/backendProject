@@ -24,26 +24,20 @@ $(".user_contact").click(function (event) {
     if (request) {
         request.abort();
     }
-    // setup some local variables
-    var $owner = $(this);
-    console.log($owner);
 
-    // Let's select and cache all the fields
+    var $owner = $(this);
+
     var $input = $owner.find("input");
     var $replace = "#replaceAjax";
-    console.log($input);
     var $userId = $input.val();
-    console.log($userId);
 
-    // Fire off the request to /form.php
     request = $.ajax({
         url: "/php/contact.php",
         type: "post",
         data: {userId: $userId},
         success: function (value) {
             $($replace).html(value);
-            console.log(value);
-        
+
         },
         error: function(){
             alert("Oops");

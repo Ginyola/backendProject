@@ -2,7 +2,6 @@ $(document).ready(function ()
 {
     var bookId = GetURLParameter("id");
     var $object = $('#book_rating_div');
-    console.log($object);
     var request;
 
     // Abort any pending request
@@ -17,7 +16,6 @@ $(document).ready(function ()
         data: {book_id: bookId},
         success: function (value) {
             $object.rateit('value', value);
-            console.log(value);
 
         },
         error: function () {
@@ -30,7 +28,6 @@ $('#book_rating_div').click(function (event)
 {
     var bookId = GetURLParameter("id");
     var newRating = $('#book_rating_div').rateit('value');
-    console.log(newRating);
     var $object = $('#book_rating_div');
 
     var request;
@@ -46,7 +43,6 @@ $('#book_rating_div').click(function (event)
             set_rating: newRating},
         success: function (value) {
             $object.rateit('value', value);
-            console.log(value);
 
         },
         error: function () {

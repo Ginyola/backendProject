@@ -10,10 +10,10 @@ if (!empty($login) && !empty($pass)) {
     $userInfo = findUserByLogin($login, $pass);
     if (!empty($userInfo)) {
         saveSessionUser($userInfo);
-        header('refresh: 2; url=http://localhost/php/profile.php');
+        header('Location: http://localhost/php/profile.php');
         exit(0);
     } else {
-        header('refresh: 2; url=http://localhost/php/sign_in.php');
+        header('Location: http://localhost/php/sign_in.php');
         exit(0);
     }
 }

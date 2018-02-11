@@ -1,10 +1,9 @@
 ﻿<?php
 
-header("refresh: 3; url=http://localhost/index.php");
 require_once("../include/common.inc.php");
 requireAuth();
 
-define('UPLOAD_DIR', "content/images/");
+define('UPLOAD_DIR', "../content/images/");
 
 $uploadedFiles = & $_FILES["cover"];
 $userId = isset($_SESSION['user']['user_id']) ? $_SESSION['user']['user_id'] : [];
@@ -37,3 +36,5 @@ if ($uploadedFiles["error"] === UPLOAD_ERR_OK) {
     
      dbUploadImage($uploadedFiles, $book["book_id"], "update_cover");
 }
+
+header("Location: http://localhost/php/book.php?id=" . $book["book_id"] . "");

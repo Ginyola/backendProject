@@ -1,25 +1,27 @@
 <div class="">
-  <div class="page-header">
-    <h3 style="margin-bottom: 10px;"><small class="pull-right">{{count_comments}} комментариев</small> Комментарии </h3>
+  <div class="page-header" style="margin-bottom: 0;">
+    <h3 style="margin-bottom: 10px;"><small class="pull-right" style="padding-top: 25px;">{{count_comments}} комментариев</small> Комментарии </h3>
   </div>
   {% if comments is not empty%}
       {% for c in comments%}
           <div class="comments-list">
             <div class="media">
-              <p class="pull-right"><small>{{c.date}}</small></p>
+              <p class="pull-right"><small style="line-height: 4;">{{c.date}}</small></p>
               <p class="media-left">
                 <img style="background-image: url('http://localhost/{{c.avatar}}');">
               </p>
-              <div class="media-body">
+              <div class="media-body" style="padding-bottom: 10px;">
                 <h4 class="media-heading user_name">{{c.name}}</h4>
+                <span class="rateit" data-rateit-value="{{c.rating}}" data-rateit-resetable="false" data-rateit-readonly="true"
+                      style="margin-bottom:5px;"></span>
+                <br>
                 {{c.comment}}
               </div>
-              <span class="rateit" data-rateit-value="{{c.rating}}" data-rateit-resetable="false" data-rateit-readonly="true"></span>
             </div>
           </div>
       {% endfor %}
-  {#{% else %}
-      <h4 style="margin-bottom: 40px;"> Нет комментариев </h4>#}
+      {#{% else %}
+          <h4 style="margin-bottom: 40px;"> Нет комментариев </h4>#}
   {% endif %}
 </div>
 <div class="clear"></div>

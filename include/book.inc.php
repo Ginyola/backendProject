@@ -9,12 +9,12 @@ function dbAddBookToLibary($book, $userId) {
     $result = dbQuery($query);
 
     if ($result != 0) {
-        echo "Книга добавлена в базу данных";
+        $_SESSION["info_message"] = 6;
         $bookId = dbGetLastInserted();
         tieUserWithBook($bookId, $userId);
         return $bookId;
     } else {
-        echo "Книга не добавлена в базу данных";
+        $_SESSION["info_message"] = 5;
     }
     //return (!empty($result) ? 0 : 1);//ToDo always empty
 }
@@ -31,9 +31,9 @@ function dbUpdateBookToLibary($book) {
     $result = dbQuery($query);
 
     if ($result != 0) {
-        echo "Книга обновлена";
+        $_SESSION["info_message"] = 7;
     } else {
-        echo "Книга не обновлена";
+        $_SESSION["info_message"] = 8;
     }
 }
 
@@ -67,8 +67,8 @@ function dbAddCover($id, $path) {
 }
 
 function dbUpdateCover($id, $path) {
-    $query = 'UPDATE image SET image ="' . dbQuote($path) . '"'
-            . 'WHERE book_id = "' . dbQuote($id) . '";';
+    $query = 'UPDATE image SET image = "' . dbQuote($path) . '"'
+            . ' WHERE book_id = "' . dbQuote($id) . '";';
     $result = dbQuery($query);
     if ($result != 0) {
         echo "Ссылка картинки обновлена";
@@ -77,7 +77,19 @@ function dbUpdateCover($id, $path) {
     }
 }
 
-function getRecentBooks() {
+function dbUpdateAvatar($newId, $path) {
+    $query = 'UPDATE users SET avatar ="' . dbQuote($path) . '"'
+            . ' WHERE user_id = "' . dbQuote($newId) . '";';
+    $result = dbQuery($query);
+    if ($result != 0) {
+        echo "Аватар обновлён";
+    } else {
+        echo "Аватар не обновлён";
+    }
+}
+
+function getRecentBooks($page) {
+    $startPoint = ($page - 1) * MAX_BOOKS_PAGE;
     $query = 'SELECT books.book_id, books.title, books.author, YEAR(books.print_date) as print_date, image.image, rate, genre.genre_ru'
             . ' FROM books '
             . ' LEFT JOIN image USING (book_id)'
@@ -87,7 +99,8 @@ function getRecentBooks() {
             . ') as sub_table'
             . ' USING (book_id)'
             . ' WHERE books.deleted = 0'
-            . ' ORDER BY book_id DESC;';
+            . ' ORDER BY book_id DESC'
+            . ' LIMIT ' . MAX_BOOKS_PAGE . ' OFFSET ' . dbQuote($startPoint) . ';';
     $books = dbQueryGetResult($query);
 
     return (!empty($books) ? $books : []);
@@ -181,8 +194,7 @@ function updateBookRating($userId, $bookId, $rating) {
     dbQuery($query);
 }
 
-function changeBookStatus($userId, $bookId, $offer)
-{
+function changeBookStatus($userId, $bookId, $offer) {
     $query = 'UPDATE offer SET offer = "' . dbQuote($offer) . '" WHERE'
             . ' user_id = "' . dbQuote($userId) . '" AND book_id = "' . dbQuote($bookId) . '";';
     $result = dbQuery($query);
@@ -190,22 +202,31 @@ function changeBookStatus($userId, $bookId, $offer)
 //    return $result;
 }
 
-function addComment($userId, $bookId, $comment)
-{
+function addComment($userId, $bookId, $comment) {
     $query = 'INSERT INTO comment (user_id, book_id, comment) VALUES '
             . '("' . dbQuote($userId) . '", "' . dbQuote($bookId) . '" , "' . dbQuote($comment) . '");';
     $result = dbQuery($query);
 }
 
-function getComments($id)
-{
+function getComments($id) {
     $query = 'SELECT t1.comment_id, t1.user_id, t1.name, t2.rating, t1.date, t1.comment, t1.avatar FROM 
     (SELECT comment.*, users.name, users.avatar FROM comment
     LEFT JOIN users USING(user_id) WHERE book_id = "' . dbQuote($id) . '") as t1 LEFT JOIN  
     (SELECT user_id, rating FROM rating WHERE book_id = "' . dbQuote($id) . '")
-    as t2 USING (user_id) ORDER BY comment_id DESC;'; 
-      
+    as t2 USING (user_id) ORDER BY comment_id DESC;';
+
     $result = dbQueryGetResult($query);
-    
+
     return (!empty($result) ? $result : []);
+}
+
+function countPagesPagination() {
+    $query = 'SELECT COUNT(book_id) as c FROM books WHERE deleted = 0;';
+    $result = dbQueryGetResult($query)[0]["c"];
+
+    $pages = intdiv($result, MAX_BOOKS_PAGE);
+    if ($result % MAX_BOOKS_PAGE != 0) {
+        $pages += 1;
+    }
+    return $pages;
 }

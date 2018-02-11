@@ -5,18 +5,14 @@
         <button type="submit" class="btn btn-warning change_book_button">Изменить книгу</button>
       </form>
       {% if (user.book_offer == '1') %}
-          <form onsubmit="setTimeout(function () {
-                      window.location.reload();
-                  }, 10);"
+          <form onsubmit="ReloadPage();"
                 action="http://localhost/php/remove_existing_book.php" method="POST">
             <input type="hidden" name="id" value="{{e.book_id}}">
             <button type="submit" class="btn btn-danger add_book_button">Нет этой книги</button>
           </form>
       {% endif %}
   {% else  %}
-      <form onsubmit="setTimeout(function () {
-                  window.location.reload();
-              }, 10);"
+      <form onsubmit="ReloadPage();"
             action="http://localhost/php/add_existing_book.php" method="POST">
         <input type="hidden" name="id" value="{{e.book_id}}">
         <button type="submit" class="btn btn-success add_book_button">Есть эта книга</button>

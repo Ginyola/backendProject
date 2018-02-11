@@ -1,7 +1,6 @@
 ﻿<?php
-chdir('../');
-header("refresh: 5; url=http://localhost/index.php");
-require_once("include/common.inc.php");
+
+require_once("../include/common.inc.php");
 
 define('UPLOAD_DIR', "content/users/avatars/");
 
@@ -34,6 +33,8 @@ if (!checkUserExist($email)) {
 
         dbUploadImage($uploadedFiles, $newId, "avatar"); //TODO: check function result
     }
+    header("Location: http://localhost/index.php");
 } else {
-    echo "Error\n";
+    $_SESSION["info_message"] = 9;
+    header("Location: http://localhost/php/registration.php");
 }

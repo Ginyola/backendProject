@@ -29,5 +29,9 @@ function dbUploadImage($uploadedFiles, $newId, $from) {
         if ($from == "update_cover") {
             dbUpdateCover($newId, $path);
         }
+        if ($from == "update_avatar") {
+            dbUpdateAvatar($newId, $path);
+        }
     }
+    
 }

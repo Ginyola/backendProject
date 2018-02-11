@@ -1,8 +1,10 @@
 <div>
   <h1>Личный кабинет:</h1>
-  <div class="avatar">
-    <img src="http://localhost/{{user.avatar}}" alt="Ошибка загрузки аватара" class="img-rounded">
-  </div>  
+  <form action="http://localhost/php/change_profile.php">
+    <button class="avatar">
+      <img src="http://localhost/{{user.avatar}}" alt="Ошибка загрузки аватара" class="img-rounded">
+    </button>  
+  </form>
 
   <div class="user_info">
     <h1>
@@ -18,15 +20,15 @@
           {{user.name}}
       {% endif %}
     </h1>
-    <div id="profileDataButton" class="btn btn-primary">
+    <div id="profileDataButton" class="btn btn-primary" style="margin-bottom: 5px;">
       Данные о себе
     </div>
-    <ol id="profileData" class="profile_data">
-      <li><span>Email:</span> {{user.login}}</li>
-      <li><span>Адрес:</span> {{user.address}}</li>
-      <li><span>Контакт:</span> {{user.phone_number}}</li>
-      <li><span>День рождения:</span> {{user.birthday}}</li>
-      <li><span>Дата регистрации:</span> {{user.registration_time}}</li>
+    <ol id="profileData" class="list-group profile_data">
+      <li class="list-group-item"><span>Email:</span> {{user.login}}</li>
+      <li class="list-group-item"><span>Адрес:</span> {{user.address}}</li>
+      <li class="list-group-item"><span>Контакт:</span> {{user.phone_number}}</li>
+      <li class="list-group-item"><span>День рождения:</span> {{user.birthday}}</li>
+      <li class="list-group-item"><span>Дата регистрации:</span> {{user.registration_time}}</li>
     </ol>
   </div>
   <div>

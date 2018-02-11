@@ -13,16 +13,12 @@
           <td>{{i.add_date}}</td>
           <td>
             {% if i.offer == 1 %}
-                <form onsubmit="setTimeout(function () {
-                      window.location.reload();
-                  }, 10);" action="http://localhost/php/change_book_status.php" method="post">
+                <form onsubmit="ReloadPage();" action="http://localhost/php/change_book_status.php" method="post">
                   <input type="hidden" name="id" value="{{i.book_id}}">
                   <button type="submit" name="offer" value="0" class="btn-link">Книга свободна</button>
                 </form>
             {% else %}
-                <form onsubmit="setTimeout(function () {
-                      window.location.reload();
-                  }, 10);" action="http://localhost/php/change_book_status.php" method="post">
+                <form onsubmit="ReloadPage();" action="http://localhost/php/change_book_status.php" method="post">
                   <input type="hidden" name="id" value="{{i.book_id}}">
                   <button type="submit" name="offer" value="1" class="btn-link">Книга занята</button>
                 </form>

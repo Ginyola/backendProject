@@ -14,17 +14,24 @@ button.add_book_button span
 
 .avatar
 {
+    display: block;
+    border: none;
     float: right; 
     width: 150px;
     height: 150px;
 }
 
-div.avatar img
+button.avatar img
 {
     height: 150px;
     width: 150px;
     display: block;
     margin: auto;
+}
+
+button.avatar img:hover
+{
+    opacity: 0.5;
 }
 
 div.user_info ol
@@ -64,6 +71,8 @@ table, th, tr, td{
 .profile_data
 {
     display: none;
+    width: 350px;
+
 }
 
 #profileDataButton

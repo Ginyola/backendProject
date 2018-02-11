@@ -8,10 +8,10 @@ if (isset($_SESSION["info_message"])) {
     $_SESSION["info_message"] = [];
 }
 
-$user = isset($_SESSION['user']) ? $_SESSION['user'] : [];//ToDo: нахрена?
+$user = isset($_SESSION['user']) ? $_SESSION['user'] : [];
 
 $vars = array(
     "user" => $user,
     "info_message" => $infoMessage);
 
-echo getView("registration.twig", $vars);
+echo getView("change_profile.twig", $vars);

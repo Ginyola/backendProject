@@ -21,3 +21,8 @@ label.new_avatar_image input
     opacity: 0.8;
     outline: 1px solid #7f7fff;
 }
+
+.form-control
+{
+    width: 200%;
+}
